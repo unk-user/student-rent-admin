@@ -1,5 +1,5 @@
-import Cancel01Icon from '../../icons/cancel-01-stroke-rounded';
-import PlusSignIcon from '../../icons/plus-sign-stroke-rounded';
+import Cancel01Icon from '@/icons/cancel-01-stroke-rounded';
+import PlusSignIcon from '@/icons/plus-sign-stroke-rounded';
 import PropTypes from 'prop-types';
 
 function ImageInput({ selectedFiles, setSelectedFiles, status }) {

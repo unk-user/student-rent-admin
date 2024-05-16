@@ -1,23 +1,26 @@
-import { useActionData } from 'react-router-dom';
 import { AnimatePresence, backInOut, motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-function ErrorPopup() {
-  const actionData = useActionData();
-
+function ErrorPopup({ message }) {
   return (
     <AnimatePresence mode="wait">
-      {actionData?.error && (
+      {message && (
         <motion.div
           initial={{ y: 50 }}
           animate={{ y: 0 }}
           transition={{ ease: backInOut }}
-          className="absolute -z-10 -top-12 rounded-md bg-slate-600 w-full text-center p-2"
+          className="absolute -top-12 rounded-md bg-slate-600 w-full text-center p-2"
         >
-          {actionData.error}
+          {message}
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
+
+ErrorPopup.propTypes = {
+  isError: PropTypes.bool,
+  message: PropTypes.string,
+};
 
 export default ErrorPopup;

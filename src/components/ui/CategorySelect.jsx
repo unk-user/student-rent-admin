@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { v4 as uuidV4 } from 'uuid';
-import PermanentJobIcon from '../icons/permanent-job-stroke-rounded';
-import House01Icon from '../icons/house-01-stroke-rounded';
-import BedBunkIcon from '../icons/bed-bunk-stroke-rounded';
-import BedDoubleIcon from '../icons/bed-double-stroke-rounded';
+import PermanentJobIcon from '@/icons/permanent-job-stroke-rounded';
+import House01Icon from '@/icons/house-01-stroke-rounded';
+import BedBunkIcon from '@/icons/bed-bunk-stroke-rounded';
+import BedDoubleIcon from '@/icons/bed-double-stroke-rounded';
 
 const categories = [
   { label: 'appartment', icon: <PermanentJobIcon width={28} height={28} /> },

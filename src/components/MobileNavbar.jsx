@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import DashboardSquare02Icon from '../../icons/dashboard-square-02-stroke-rounded';
-import Comment01Icon from '../../icons/comment-01-stroke-rounded';
-import FolderShared01Icon from '../../icons/folder-shared-01-stroke-rounded (1)';
-import House05Icon from '../../icons/house-05-stroke-rounded';
+import DashboardSquare02Icon from '@/icons/dashboard-square-02-stroke-rounded';
+import Comment01Icon from '@/icons/comment-01-stroke-rounded';
+import FolderShared01Icon from '@/icons/folder-shared-01-stroke-rounded (1)';
+import House05Icon from '@/icons/house-05-stroke-rounded';
 
 function MobileNavbar() {
   return (

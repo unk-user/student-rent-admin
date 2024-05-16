@@ -5,7 +5,7 @@ import MobileNavbar from './MobileNavbar';
 import Header from './Header';
 import DataNavbarWrapper from './DataNavbarWrapper';
 import { useMemo } from 'react';
-import useQueryAuth from '../../hooks/useQueryAuth';
+import useQueryAuth from '@/hooks/useQueryAuth';
 import DataNavbar from './DataNavbar';
 
 function LandlordLayout() {

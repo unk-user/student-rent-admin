@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import useQueryAuth from '../../../hooks/useQueryAuth';
-import Button from '../../../components/Button';
-import FolderShared01Icon from '../../../icons/folder-shared-01-stroke-rounded (1)';
-import ProfileIcon from '../../../icons/profile-stroke-rounded';
-import NavigationButton from '../../../components/NavigationButton';
+import useQueryAuth from '@/hooks/useQueryAuth';
+import Button from '@/components/ui/Button';
+import FolderShared01Icon from '@/icons/folder-shared-01-stroke-rounded (1)';
+import ProfileIcon from '@/icons/profile-stroke-rounded';
+import NavigationButton from '@/components/ui/NavigationButton';
 import { useState } from 'react';
 import PropertyDetails from './PropertyDetails';
 

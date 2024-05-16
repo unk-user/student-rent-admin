@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import BedDoubleIcon from '../../../icons/bed-double-stroke-rounded';
-import Bathtub01Icon from '../../../icons/bathtub-01-stroke-rounded';
-import UserIdVerificationIcon from '../../../icons/user-id-verification-stroke-rounded';
+import BedDoubleIcon from '@/icons/bed-double-stroke-rounded';
+import Bathtub01Icon from '@/icons/bathtub-01-stroke-rounded';
+import UserIdVerificationIcon from '@/icons/user-id-verification-stroke-rounded';
 
 function PropertyDetails({ listing }) {
   return (

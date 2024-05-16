@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
-import Input from '../../../components/Input';
-import Select from '../../../components/Select';
-import Button from '../../../components/Button';
-import CategorySelect from '../../../components/CategorySelect';
+import Input from '@/components/ui/Input';
+import Select from '@/components/ui/Select';
+import Button from '@/components/ui/Button';
+import CategorySelect from '@/components/ui/CategorySelect';
 import { useContext, useReducer, useState } from 'react';
-import Textarea from '../../../components/Textarea';
-import useQueryAuth from '../../hooks/useQueryAuth';
+import Textarea from '@/components/ui/Textarea';
+import useQueryAuth from '@/hooks/useQueryAuth';
 import ImageInput from './ImageInput';
-import AuthContext from '../../context/AuthProvider';
+import AuthContext from '@/context/AuthProvider';
 
 const citiesArray = [
   'Agadir',
