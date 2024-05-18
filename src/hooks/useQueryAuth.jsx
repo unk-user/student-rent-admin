@@ -4,7 +4,7 @@ import axiosInstance from '../utils/axiosInstance';
 import AuthContext from '../context/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 
-function useQueryAuth({ queryKey, url, role = '' }) {
+function useQueryAuth({ queryKey, url }) {
   const [authErrorCount, setAuthErrorCount] = useState(0);
   const { auth, refreshAccessToken } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -38,12 +38,6 @@ function useQueryAuth({ queryKey, url, role = '' }) {
   });
 
   useEffect(() => {
-    if (auth?.role !== role && auth) {
-      navigate(`/${auth.role}`, { replace: true });
-    }
-  }, [auth, navigate, role]);
-
-  useEffect(() => {
     if (
       status === 'error' &&
       (error?.response.status === 401 || error?.response.status === 403) &&
@@ -59,7 +53,7 @@ function useQueryAuth({ queryKey, url, role = '' }) {
     }
   }, [status, navigate, error, refreshAccessToken, authErrorCount]);
 
-  return { data, status };
+  return { data, status, error };
 }
 
 export default useQueryAuth;

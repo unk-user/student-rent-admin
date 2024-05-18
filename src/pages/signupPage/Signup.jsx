@@ -1,9 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
-import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 import { useContext, useEffect } from 'react';
 import AuthContext from '@/context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Signup() {
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -15,10 +15,9 @@ function Login() {
 
   return (
     <main className="flex flex-col justify-center items-center h-screen">
-      <LoginForm />
-      <Link to="/">Home</Link>
+      <SignupForm />
     </main>
   );
 }
 
-export default Login;
+export default Signup;
