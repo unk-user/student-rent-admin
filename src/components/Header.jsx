@@ -15,7 +15,7 @@ function Header() {
     <header className="bg-gray-300 border-b border-gray-500 sticky top-0 z-30 flex items-center gap-6 max-md:gap-4 px-8">
       <div className="breadcrumbs">
         <ul>
-          {pathArray.map((item, index) => {
+          {pathArray?.map((item, index) => {
             if (index < 2)
               return (
                 <li key={uuidV4()}>
@@ -33,17 +33,17 @@ function Header() {
       <Link>
         <Notification03Icon />
       </Link>
-      <details className="dropdown dropdown-end">
-        <summary
+      <div className="dropdown dropdown-hover dropdown-end">
+        <div
           tabIndex={0}
           role="button"
           className="btn btn-ghost btn-circle avatar mt-[6px]"
         >
           <div className="w-12 rounded-full bg-green-300"></div>
-        </summary>
+        </div>
         <ul
           tabIndex={0}
-          className="mt-1 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+          className="pt-1 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
         >
           <li>
             <a className="justify-between">
@@ -58,7 +58,7 @@ function Header() {
             <a>Logout</a>
           </li>
         </ul>
-      </details>
+      </div>
     </header>
   );
 }
