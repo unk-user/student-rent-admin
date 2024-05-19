@@ -1,4 +1,3 @@
-import Notification03Icon from '@/icons/notification-03-stroke-rounded';
 import { Link, useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 import { v4 as uuidV4 } from 'uuid';
@@ -12,11 +11,11 @@ function Header() {
   }, [location]);
 
   return (
-    <header className="bg-gray-300 border-b border-gray-500 sticky top-0 z-30 flex items-center gap-6 max-md:gap-4 px-8">
+    <header className="bg-gray-300 border-b border-gray-500 sticky top-0 z-30 flex items-center gap-6 max-md:gap-4 px-8 max-md:px-2">
       <div className="breadcrumbs">
         <ul>
           {pathArray?.map((item, index) => {
-            if (index < 2)
+            if (index < 3)
               return (
                 <li key={uuidV4()}>
                   <Link
@@ -30,9 +29,6 @@ function Header() {
         </ul>
       </div>
       <Link className="ml-auto link link-hover">Requests</Link>
-      <Link>
-        <Notification03Icon />
-      </Link>
       <div className="dropdown dropdown-hover dropdown-end">
         <div
           tabIndex={0}

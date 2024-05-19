@@ -6,10 +6,13 @@ import BedBunkIcon from '@/icons/bed-bunk-stroke-rounded';
 import BedDoubleIcon from '@/icons/bed-double-stroke-rounded';
 
 const categories = [
-  { label: 'appartment', icon: <PermanentJobIcon width={28} height={28} /> },
-  { label: 'studio', icon: <House01Icon width={28} height={28} /> },
-  { label: 'room', icon: <BedDoubleIcon width={28} height={28} /> },
-  { label: 'dorm', icon: <BedBunkIcon width={28} height={28} /> },
+  {
+    label: 'appartment',
+    icon: <PermanentJobIcon width={'2.1rem'} height={'2.1rem'} />,
+  },
+  { label: 'studio', icon: <House01Icon width={'2.1rem'} height={'2.1rem'} /> },
+  { label: 'room', icon: <BedDoubleIcon width={'2.1rem'} height={'2.1rem'} /> },
+  { label: 'dorm', icon: <BedBunkIcon width={'2.1rem'} height={'2.1rem'} /> },
 ];
 
 function CategorySelect({ value, handleChange }) {
@@ -20,13 +23,13 @@ function CategorySelect({ value, handleChange }) {
         {categories.map((category) => (
           <div key={uuidV4()}>
             <button
-              type='button'
+              type="button"
               className={`h-24 w-full border-2 rounded-lg flex items-center outline-offset-1 ${
                 value === category.label && 'outline'
               } p-4`}
               onClick={() => handleChange(category.label)}
             >
-              <div className="flex flex-col gap-1 text-lg">
+              <div className="flex flex-col gap-1">
                 {category.icon}
                 {category.label[0].toLocaleUpperCase() +
                   category.label.slice(1)}
