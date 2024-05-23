@@ -11,7 +11,7 @@ function Header() {
   }, [location]);
 
   return (
-    <header className="bg-gray-300 border-b border-gray-500 sticky top-0 z-30 flex items-center gap-6 max-md:gap-4 px-8 max-md:px-2">
+    <header className="bg-gray-300 border-b border-gray-500 sticky top-0 z-30 flex items-center gap-6 max-md:gap-4 px-8 max-md:px-4">
       <div className="breadcrumbs">
         <ul>
           {pathArray?.map((item, index) => {

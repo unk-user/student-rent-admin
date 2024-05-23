@@ -44,7 +44,7 @@ function DataListingStat({ listing }) {
           </div>
           <div>
             <DataListingValue>
-              <span className="text-green-600">{listing.price}DH</span>
+              <span className="text-green-600">{listing.price}DH <span className='text-sm truncate text-black'>/{listing.period}</span></span>
             </DataListingValue>
             <DataListingTitle>Price</DataListingTitle>
           </div>

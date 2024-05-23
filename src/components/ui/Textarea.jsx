@@ -4,6 +4,7 @@ export default function Textarea({
   className,
   name,
   value,
+  heightClass,
   placeholder = '',
   onChange,
   label,
@@ -20,8 +21,8 @@ export default function Textarea({
 
   return (
     <div className={combinedClassName}>
-      <label htmlFor={name} className={`mb-1 relative `}>
-        <h6>{label}</h6>
+      <label htmlFor={name} className={`mb-1 relative text-xl`}>
+        {label}
       </label>
       <textarea
         placeholder={placeholder}
@@ -33,7 +34,9 @@ export default function Textarea({
         value={value}
         onChange={onChange}
         rows="10"
-        className="textarea textarea-bordered text-base resize-none p-2 textarea-lg w-full h-24"
+        className={`textarea textarea-bordered text-xl resize-none p-2 textarea-lg w-full ${
+          heightClass || 'h-24'
+        }`}
       ></textarea>
       {maxLength && (
         <div className="absolute -bottom-5 right-0 text-sm">
@@ -55,4 +58,5 @@ Textarea.propTypes = {
   required: PropTypes.bool,
   value: PropTypes.any,
   onChange: PropTypes.func,
+  heightClass: PropTypes.string,
 };

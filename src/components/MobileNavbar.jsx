@@ -6,18 +6,18 @@ import House05Icon from '@/icons/house-05-stroke-rounded';
 
 function MobileNavbar() {
   return (
-    <nav className="bg-gray-600 z-30 h-[64px] fixed bottom-2 left-2 right-2 rounded-lg flex items-center justify-evenly px-12">
+    <nav className="bg-gray-600 z-30 h-[64px] fixed bottom-0 left-0 right-0 flex items-center justify-evenly px-4">
       <NavLink to="">
-        <DashboardSquare02Icon />
+        <DashboardSquare02Icon width={30} height={30} />
       </NavLink>
       <NavLink to="messages">
-        <Comment01Icon />
+        <Comment01Icon width={30} height={30} />
       </NavLink>
       <NavLink to="properties">
-        <House05Icon />
+        <House05Icon width={30} height={30} />
       </NavLink>
       <NavLink to="tenants">
-        <FolderShared01Icon />
+        <FolderShared01Icon width={30} height={30} />
       </NavLink>
     </nav>
   );
