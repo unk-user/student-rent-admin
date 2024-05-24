@@ -3,9 +3,11 @@ import Navbar from './Navbar';
 import { useMediaQuery } from '@mui/material';
 import MobileNavbar from './MobileNavbar';
 import Header from './Header';
+import useQueryAuth from '@/hooks/useQueryAuth';
 
 function LandlordLayout() {
   const isMobile = useMediaQuery('(max-width: 767px');
+  useQueryAuth({queryKey: ['auth'], url: '/me'});
 
   return (
     <article className="h-max relative flex md:ml-[76px]">
