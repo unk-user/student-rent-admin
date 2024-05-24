@@ -4,11 +4,18 @@ import Signup from './pages/signupPage/Signup';
 import axios from 'axios';
 import LandlordLayout from './components/LandlordLayout';
 import PropertiesPage from './pages/property-details/PropertiesPage';
-import PropertyDetailsPage from './pages/property-details/PropertyDetailsPage';
-import EditProperty from './pages/property-edit/EditProperty';
+import InsertPropertyForm from './pages/InsertPropertyPage/InsertPropertyForm';
+import Step1 from './pages/InsertPropertyPage/Step1';
+import Step2 from './pages/InsertPropertyPage/Step2';
+import Step3 from './pages/InsertPropertyPage/Step3';
+import Step4 from './pages/InsertPropertyPage/Step4';
+import Step5 from './pages/InsertPropertyPage/Step5';
+import Step6 from './pages/InsertPropertyPage/Step6';
+import Publish from './pages/InsertPropertyPage/Publish';
 
 function App() {
   axios.defaults.withCredentials = true;
+
   const router = createBrowserRouter([
     {
       path: '/logout',
@@ -32,10 +39,42 @@ function App() {
         },
         {
           path: 'properties',
-          element: <PropertiesPage />
+          element: <PropertiesPage />,
         },
-        { path: 'properties/edit', element: <EditProperty /> },
-        { path: 'properties/edit/:propertyId', element: <EditProperty /> },
+        {
+          path: 'properties/insert',
+          element: <InsertPropertyForm />,
+          children: [
+            {
+              path: 'step1',
+              element: <Step1 />,
+            },
+            {
+              path: 'step2',
+              element: <Step2 />,
+            },
+            {
+              path: 'step3',
+              element: <Step3 />,
+            },
+            {
+              path: 'step4',
+              element: <Step4 />,
+            },
+            {
+              path: 'step5',
+              element: <Step5 />,
+            },
+            {
+              path: 'step6',
+              element: <Step6 />,
+            },
+            {
+              path: 'publish',
+              element: <Publish />
+            },
+          ],
+        },
       ],
     },
   ]);
