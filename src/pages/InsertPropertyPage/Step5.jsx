@@ -23,20 +23,18 @@ function Step5() {
   };
 
   return (
-    <div className='w-full'>
-      <h3 className="mb-3">Upload photos to showcase your rental</h3>
+    <div className="w-full">
+      <h3 className="mb-3 w-fit">Upload photos to showcase your rental</h3>
       <div className="rounded-2xl p-4 bg-base-200 max-w-[760px]">
         <label
           htmlFor="image-upload"
-          className={`rounded-xl border-2 border-dashed mb-2 border-gray-600 flex justify-center items-center h-32 ${selectedFiles.length === 4 && 'opacity-50'}`}
+          className={`rounded-xl border-2 border-dashed mb-2 border-gray-600 flex justify-center items-center h-32 ${
+            selectedFiles.length === 4 && 'opacity-50'
+          }`}
         >
           <input
             id="image-upload"
-            disabled={
-              status === 'loading' ||
-              status === 'success' ||
-              selectedFiles.length === 4
-            }
+            disabled={selectedFiles.length === 4}
             type="file"
             accept="image/*"
             multiple

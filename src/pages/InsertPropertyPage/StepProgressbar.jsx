@@ -3,11 +3,13 @@ import Button from '@/components/ui/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { FormContext } from './context/FormProvider';
+import { MutationContext } from './context/MutationProvider';
 
 function StepProgressbar({ progress, next, className, step }) {
   const navigate = useNavigate();
   const [transitionValue, setTransitionValue] = useState(0);
   const { stepsValidity } = useContext(FormContext);
+  const { uploadImagesMutation } = useContext(MutationContext);
 
   useEffect(() => {
     let startTime = null;
@@ -29,6 +31,11 @@ function StepProgressbar({ progress, next, className, step }) {
 
   const handleClick = () => {
     if (next && stepsValidity[step]) navigate(next);
+  };
+
+  const handlePublish = () => {
+    navigate(next);
+    uploadImagesMutation.mutate();
   };
 
   return (
@@ -60,7 +67,10 @@ function StepProgressbar({ progress, next, className, step }) {
           Next
         </Button>
       ) : (
-        <Button handleClick={handleClick} className="ml-auto w-28 bg-slate-600">
+        <Button
+          handleClick={handlePublish}
+          className="ml-auto w-28 bg-slate-600"
+        >
           Publish
         </Button>
       )}

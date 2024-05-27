@@ -1,48 +1,40 @@
+import CheckmarkCircle02Icon from '@/icons/checkmark-circle-02-stroke-rounded';
+import { MutationContext } from './context/MutationProvider';
 import { useContext } from 'react';
-import { FormContext } from './context/FormProvider';
-import ListingCard from './ListingCard';
-import ListingOptionCard from '@/components/ListingOptionCard';
-
-const basicFeatures = [
-  'Your listing will be visible to all users',
-  'No additional fees or charges',
-  'Standard visibility and ranking',
-];
-
-const premiumFeatures = [
-  'Higher priority in search results',
-  'Increased visibility and exposure',
-  'Featured listing badge',
-];
 
 function Publish() {
-  const { propertyDetails, selectedFiles } = useContext(FormContext);
+  const { uploadImagesMutation, publishListingMutation } =
+    useContext(MutationContext);
 
   return (
     <div>
-      <h3 className="mb-3">Publish your listing</h3>
-      <div className="flex gap-4 max-md:gap-2 max-sm:flex-col">
-        <div className="w-[220px] lg:w-[240px] max-sm:w-full">
-          {selectedFiles[0] && (
-            <ListingCard
-              listing={propertyDetails}
-              imageUrl={URL.createObjectURL(selectedFiles[0])}
-            />
+      <h3 className="mb-3">Publishing listing, please wait a few moments...</h3>
+      <ul className="text-xl">
+        <li key="0" className="flex items-center">
+          {uploadImagesMutation.status === 'success' ? (
+            <CheckmarkCircle02Icon size={24} />
+          ) : (
+            <span className="loading loading-spinner loading-md"></span>
           )}
-        </div>
-        <div className="grid grid-rows-2 flex-1 gap-2">
-          <ListingOptionCard
-            header="Publish without ads"
-            title="basic listing"
-            features={basicFeatures}
-          />
-          <ListingOptionCard
-            header="Boosted"
-            title="premium Listing"
-            features={premiumFeatures}
-          />
-        </div>
-      </div>
+          <p>
+            {uploadImagesMutation.status === 'success'
+              ? 'Images uploaded'
+              : 'Uploading images'}
+          </p>
+        </li>
+        <li key="1" className="flex items-center">
+          {publishListingMutation.status === 'success' ? (
+            <CheckmarkCircle02Icon size={24} />
+          ) : (
+            <span className="loading loading-spinner loading-md"></span>
+          )}
+          <p>
+            {publishListingMutation.status === 'success'
+              ? 'listing created'
+              : 'Creating listing'}
+          </p>
+        </li>
+      </ul>
     </div>
   );
 }
