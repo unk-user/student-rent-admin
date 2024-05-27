@@ -12,7 +12,7 @@ function DataListingStatSection({ cols = 1, children, className }) {
 
 DataListingStatSection.propTypes = {
   cols: PropTypes.number,
-  children: PropTypes.element,
+  children: PropTypes.array,
   className: PropTypes.string,
 };
 

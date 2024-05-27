@@ -40,22 +40,27 @@ function StepProgressbar({ progress, next, className, step }) {
         max="100"
         value={transitionValue}
       ></progress>
-      <Link
-        to=".."
-        onClick={(e) => {
-          e.preventDefault();
-          navigate(-1);
-        }}
-        className="link"
-      >
-        Back
-      </Link>
-      {progress < 100 ? (
-        <Button handleClick={handleClick} className="ml-auto w-28">
+      {progress < 100 && (
+        <Link
+          to=".."
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(-1);
+          }}
+          className="link"
+        >
+          Back
+        </Link>
+      )}
+      {step !== 'step6' ? (
+        <Button
+          handleClick={handleClick}
+          className={`ml-auto w-28 ${progress >= 100 && 'disabled'}`}
+        >
           Next
         </Button>
       ) : (
-        <Button className="ml-auto w-28 bg-slate-600">
+        <Button handleClick={handleClick} className="ml-auto w-28 bg-slate-600">
           Publish
         </Button>
       )}

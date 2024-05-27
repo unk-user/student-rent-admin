@@ -4,6 +4,8 @@ import { v4 as uuidV4 } from 'uuid';
 function Select({
   className,
   name,
+  heightClass,
+  inputClass,
   placeholder,
   label,
   options,
@@ -18,10 +20,10 @@ function Select({
   return (
     <div className={combinedClassName}>
       <label htmlFor={name} className={`mb-1 relative `}>
-        <h6>{label}</h6>
+        {label}
       </label>
       <select
-        className="select select-bordered text-base"
+        className={`select select-bordered text-xl ${heightClass || ''} ${inputClass || ''}`}
         id={name}
         onChange={onChange}
         value={selected || placeholder}
@@ -51,6 +53,8 @@ Select.propTypes = {
   options: PropTypes.array,
   onChange: PropTypes.func,
   selected: PropTypes.any,
+  heightClass: PropTypes.string,
+  inputClass: PropTypes.string,
 };
 
 export default Select;
