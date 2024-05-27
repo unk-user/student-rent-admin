@@ -29,7 +29,7 @@ function useQueryAuth({ queryKey, url }) {
     return response.data;
   };
 
-  const { data, status, error } = useQuery({
+  const { data, status, error, refetch } = useQuery({
     queryFn: fetchData,
     queryKey: [...queryKey, auth?.accessToken],
     enabled: !!url,
@@ -45,13 +45,13 @@ function useQueryAuth({ queryKey, url }) {
     ) {
       console.log(authErrorCount);
       setAuthErrorCount((prevCount) => prevCount + 1);
-      refreshAccessToken();
+      refreshAccessToken().then(() => refetch());
     } else if (status === 'error' && authErrorCount > 1) {
       navigate('/login', { replace: true });
     } else if (status === 'success') {
       setAuthErrorCount(0);
     }
-  }, [status, navigate, error, refreshAccessToken, authErrorCount]);
+  }, [status, navigate, error, refreshAccessToken, refetch, authErrorCount]);
 
   return { data, status, error };
 }
