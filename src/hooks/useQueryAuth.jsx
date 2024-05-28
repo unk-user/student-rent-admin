@@ -53,7 +53,7 @@ function useQueryAuth({ queryKey, url }) {
     }
   }, [status, navigate, error, refreshAccessToken, refetch, authErrorCount]);
 
-  return { data, status, error };
+  return { data, status, error, refetch };
 }
 
 export default useQueryAuth;

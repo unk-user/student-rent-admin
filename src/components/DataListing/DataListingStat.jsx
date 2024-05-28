@@ -7,11 +7,32 @@ import MoreHorizontalIcon from '@/icons/more-horizontal-stroke-rounded';
 import Rocket01Icon from '@/icons/rocket-01-stroke-rounded';
 import PencilEdit01Icon from '@/icons/pencil-edit-01-stroke-rounded';
 import { Link } from 'react-router-dom';
+import Delete02Icon from '@/icons/delete-02-stroke-rounded';
+import axiosInstance from '@/utils/axiosInstance';
+import { useContext } from 'react';
+import AuthContext from '@/context/AuthProvider';
 
 function DataListingStat({ listing }) {
+  const optimisedImageUrl = listing.images[0].url
+    .split('upload')
+    .join('upload/f_auto,q_auto,w_800,h_600');
+
+  const handleRemove = async () => {
+    const modalElement = document.getElementById('remove_listing_modal');
+    modalElement.setAttribute('data-listing-id', listing._id);
+    modalElement.showModal();
+  };
+
   return (
     <div className="flex border-2 border-base-100 rounded-md xl:pr-2">
-      <div className="bg-indigo-400 rounded-l-md h-32 aspect-square max-xl:h-full"></div>
+      <div className="rounded-l-md h-32 aspect-square p-1 overflow-hidden">
+        {listing.images[0] && (
+          <img
+            src={optimisedImageUrl}
+            className="h-full object-cover rounded-sm brightness-[80%]"
+          />
+        )}
+      </div>
       <div className="grid grid-cols-8 flex-1 max-xl:grid-cols-5 max-lg:grid-cols-2">
         <div className="border-r-2 border-base-100">
           <DataListingStatSection className="text-ellipsis truncate flex-1 h-full">
@@ -44,7 +65,12 @@ function DataListingStat({ listing }) {
           </div>
           <div>
             <DataListingValue>
-              <span className="text-green-600">{listing.price}DH <span className='text-sm truncate text-black'>/{listing.period}</span></span>
+              <span className="text-green-600">
+                {listing.price}DH{' '}
+                <span className="text-sm truncate text-black">
+                  /{listing.period}
+                </span>
+              </span>
             </DataListingValue>
             <DataListingTitle>Price</DataListingTitle>
           </div>
@@ -59,7 +85,7 @@ function DataListingStat({ listing }) {
               {listing.students.length} Residents
             </DataListingValue>
             <DataListingTitle>
-              Full list <strong>view</strong>
+              <span className="link link-hover">view full list</span>
             </DataListingTitle>
           </div>
           <div>
@@ -101,6 +127,12 @@ function DataListingStat({ listing }) {
                       Boost Listing
                     </a>
                   </li>
+                  <li>
+                    <a className="px-2" onClick={handleRemove}>
+                      <Delete02Icon className="text-red-600" />
+                      Remove Listing
+                    </a>
+                  </li>
                 </ul>
               )}
             </div>
@@ -120,6 +152,7 @@ function DataListingStat({ listing }) {
 
 DataListingStat.propTypes = {
   listing: PropTypes.object,
+  refetch: PropTypes.func,
 };
 
 export default DataListingStat;
