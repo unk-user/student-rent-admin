@@ -29,6 +29,7 @@ function DataListingStat({ listing }) {
         {listing.images[0] && (
           <img
             src={optimisedImageUrl}
+            loading='lazy'
             className="h-full object-cover rounded-sm brightness-[80%]"
           />
         )}
@@ -113,7 +114,7 @@ function DataListingStat({ listing }) {
               {true && (
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-md w-52"
+                  className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-lg w-52"
                 >
                   <li>
                     <Link to={`edit/${listing._id}`} className="px-2">

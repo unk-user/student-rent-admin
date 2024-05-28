@@ -33,7 +33,6 @@ function useQueryAuth({ queryKey, url }) {
     queryFn: fetchData,
     queryKey: [...queryKey, auth?.accessToken],
     enabled: !!url,
-    refetchOnMount: true,
     refetchOnWindowFocus: false,
   });
 
@@ -51,7 +50,7 @@ function useQueryAuth({ queryKey, url }) {
     } else if (status === 'success') {
       setAuthErrorCount(0);
     }
-  }, [status, navigate, error, refreshAccessToken, refetch, authErrorCount]);
+  }, [navigate, refreshAccessToken, authErrorCount]);
 
   return { data, status, error, refetch };
 }

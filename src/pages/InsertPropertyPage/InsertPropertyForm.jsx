@@ -16,8 +16,8 @@ function InsertPropertyForm() {
   return (
     <FormProvider>
       <MutationProvider>
-        <main className="py-4 gap-4 max-8 mx-12 sm:mx-24 lg:mx-28 xl:mx-[180px] 2xl:mx-[380px] flex flex-col justify-center md:flex-1">
-          <section className="py-4 pb-10">
+        <main className="py-4 gap-4 max-8 mx-12 sm:mx-24 lg:mx-auto flex flex-col justify-center md:flex-1">
+          <section className="py-4 pb-10 lg:w-[650px] xl:w-[700px]">
             <Outlet />
           </section>
         </main>

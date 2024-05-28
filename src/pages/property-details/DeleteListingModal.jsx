@@ -20,7 +20,7 @@ function DeleteListingModal({ refetch, auth }) {
       className="modal modal-bottom sm:modal-middle"
     >
       <div className="modal-box">
-        <h3 className="font-bold text-lg">Delete Listing</h3>
+        <h4 className="font-bold">Delete Listing</h4>
         <p className="py-4">
           Are you sure you want to delete this listing? This action is
           permanent and cannot be undone.

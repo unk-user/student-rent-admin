@@ -53,7 +53,7 @@ function MutationProvider({ children }) {
     onSuccess: ({ results }) => {
       const images = results.map((image) => ({
         public_id: image.public_id,
-        url: image.secureUrl,
+        url: image.secure_url,
       }));
       publishListingMutation.mutate(images);
     },
