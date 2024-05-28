@@ -4,36 +4,95 @@ import Button from '@/components/ui/Button';
 import useQueryAuth from '@/hooks/useQueryAuth';
 import { useContext, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import DeleteListingModal from './DeleteListingModal';
 import AuthContext from '@/context/AuthProvider';
+import { Pagination, PaginationItem } from '@mui/material';
+import SortDropdown from './SortDropdown';
+
+const sortOptions = [
+  {
+    name: 'Newest',
+    field: 'createdAt',
+    value: -1,
+  },
+  {
+    name: 'Oldest',
+    field: 'createdAt',
+    value: 1,
+  },
+  {
+    name: 'Lowest Price',
+    field: 'price',
+    value: 1,
+  },
+  {
+    name: 'Highest Price',
+    field: 'price',
+    value: -1,
+  },
+];
 
 function PropertiesPage() {
+  //i want to take the query params from the url
+  const page = Number(useSearchParams()[0].get('page') || 1);
+  const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
+
   const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
-  const url = `/landlord/listings`;
+  const url = `/landlord/listings?page=${page}&limit=6&sortField=${
+    selectedSort.field
+  }&sortDirection=${
+    selectedSort.value !== undefined ? JSON.stringify(selectedSort.value) : '-1'
+  }`;
   const { data, status, refetch } = useQueryAuth({
     queryKey: ['listings', url],
-    url: '/landlord/listings',
+    url: url,
   });
 
   const handleClick = () => {
-    navigate('insert/step1');
+    navigate('../properties/insert/step1');
   };
 
   return (
     <main className="flex-1 relative gap-2">
-      <section className="flex item-center sticky z-20 bg-gray-300 top-0 px-4 p-4 xl:px-12 pb-6 border-b border-black">
-        <h3>Property listing</h3>
+      <section className="flex item-center z-20 bg-gray-300 pt-4 px-4 xl:px-12">
+        <h4>
+          Listings <span className="text-lg">({data?.listings?.length})</span>
+        </h4>
+        <Pagination
+          count={data?.totalPages}
+          page={page}
+          onChange={(e, p) => {
+            navigate(`?page=${p}`);
+          }}
+          hideNextButton
+          hidePrevButton
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '2rem',
+          }}
+          className="ml-auto mr-4"
+          shape="rounded"
+          renderItem={(item) => <PaginationItem {...item} />}
+        />
         <Button
           handleClick={handleClick}
-          className="ml-auto bg-slate-950 text-gray-200"
+          className=" bg-slate-950 text-gray-200 h-12"
         >
-          Create Listing
+          <span className="mr-2">+</span>
+          Add Listing
         </Button>
+        <SortDropdown
+          sortOptions={sortOptions}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
+        />
       </section>
       <div className="flex">
-        <DeleteListingModal refetch={refetch} auth={auth}/>
+        <DeleteListingModal refetch={refetch} auth={auth} />
         <DataListingWrapper>
           {status === 'success' &&
             data?.listings.map((listing) => (
