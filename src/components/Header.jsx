@@ -2,6 +2,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
+const possiblePaths = [
+  'dashboard',
+  'properties',
+  'insert',
+  'messages',
+  'tenants',
+];
+
 function Header() {
   const location = useLocation();
   const pathArray = useMemo(() => {
@@ -11,11 +19,11 @@ function Header() {
   }, [location]);
 
   return (
-    <header className="bg-gray-300 border-b border-gray-500 sticky top-0 z-30 flex items-center gap-6 max-md:gap-4 px-8 max-md:px-4">
+    <header className="bg-gray-300 border-b border-gray-500 flex items-center gap-6 max-md:gap-4 px-8 max-md:px-4">
       <div className="breadcrumbs">
         <ul>
           {pathArray?.map((item, index) => {
-            if (index < 3)
+            if (index < 3 && possiblePaths.includes(item))
               return (
                 <li key={uuidV4()}>
                   <Link
@@ -29,7 +37,7 @@ function Header() {
         </ul>
       </div>
       <Link className="ml-auto link link-hover">Requests</Link>
-      <div className="dropdown dropdown-hover dropdown-end">
+      <div className="dropdown dropdown-end">
         <div
           tabIndex={0}
           role="button"
