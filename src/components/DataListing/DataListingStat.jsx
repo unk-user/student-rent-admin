@@ -8,9 +8,6 @@ import Rocket01Icon from '@/icons/rocket-01-stroke-rounded';
 import PencilEdit01Icon from '@/icons/pencil-edit-01-stroke-rounded';
 import { Link } from 'react-router-dom';
 import Delete02Icon from '@/icons/delete-02-stroke-rounded';
-import axiosInstance from '@/utils/axiosInstance';
-import { useContext } from 'react';
-import AuthContext from '@/context/AuthProvider';
 
 function DataListingStat({ listing }) {
   const optimisedImageUrl = listing.images[0].url

@@ -9,6 +9,7 @@ import DeleteListingModal from './DeleteListingModal';
 import AuthContext from '@/context/AuthProvider';
 import { Pagination, PaginationItem } from '@mui/material';
 import SortDropdown from './SortDropdown';
+import DataListingStatSkeleton from '@/components/DataListing/DataListingStatSkeleton';
 
 const sortOptions = [
   {
@@ -34,7 +35,6 @@ const sortOptions = [
 ];
 
 function PropertiesPage() {
-  //i want to take the query params from the url
   const page = Number(useSearchParams()[0].get('page') || 1);
   const [selectedSort, setSelectedSort] = useState(sortOptions[0]);
 
@@ -55,7 +55,7 @@ function PropertiesPage() {
   };
 
   return (
-    <main className="flex-1 relative gap-2">
+    <main className="h-full relative flex flex-col">
       <section className="flex item-center z-20 bg-gray-300 pt-4 px-4 xl:px-12">
         <h4>
           Listings <span className="text-lg">({data?.listings?.length})</span>
@@ -80,7 +80,7 @@ function PropertiesPage() {
         />
         <Button
           handleClick={handleClick}
-          className=" bg-slate-950 text-gray-200 h-12"
+          className="bg-slate-950 text-gray-200 h-12"
         >
           <span className="mr-2">+</span>
           Add Listing
@@ -94,15 +94,37 @@ function PropertiesPage() {
       <div className="flex">
         <DeleteListingModal refetch={refetch} auth={auth} />
         <DataListingWrapper>
-          {status === 'success' &&
-            data?.listings.map((listing) => (
-              <DataListingStat
-                key={uuidV4()}
-                listing={listing}
-                refetch={refetch}
-              />
-            ))}
+          {status === 'success'
+            ? data?.listings.map((listing) => (
+                <DataListingStat
+                  key={uuidV4()}
+                  listing={listing}
+                  refetch={refetch}
+                />
+              ))
+            : status === 'pending' &&
+              [...new Array(6)].map((_, i) => (
+                <DataListingStatSkeleton key={i} />
+              ))}
         </DataListingWrapper>
+      </div>
+      <div className="p-4 mt-auto">
+        <Pagination
+          count={data?.totalPages}
+          page={page}
+          onChange={(e, p) => {
+            navigate(`?page=${p}`);
+          }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '2rem',
+          }}
+          className="ml-auto mr-4"
+          shape="rounded"
+          renderItem={(item) => <PaginationItem {...item} />}
+        />
       </div>
     </main>
   );
