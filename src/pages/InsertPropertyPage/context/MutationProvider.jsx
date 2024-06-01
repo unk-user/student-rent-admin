@@ -5,6 +5,7 @@ import AuthContext from '@/context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { FormContext } from './FormProvider';
 import { createContext } from 'react';
+import { PropTypes } from 'prop-types';
 
 export const MutationContext = createContext();
 
@@ -89,5 +90,9 @@ function MutationProvider({ children }) {
     </MutationContext.Provider>
   );
 }
+
+MutationProvider.propTypes = {
+  children: PropTypes.any,
+};
 
 export default MutationProvider;

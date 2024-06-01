@@ -19,10 +19,9 @@ const categories = [
 function CategorySelect({ value, handleChange }) {
   return (
     <div>
-      <h6 className="mb-2 text-xl">Category</h6>
       <div
         role="radiogroup"
-        className="grid grid-cols-2 max-lg:grid-cols-1 gap-2"
+        className="grid grid-cols-2 gap-1"
       >
         {categories.map((category) => (
           <div key={uuidV4()}>

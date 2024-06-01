@@ -8,6 +8,7 @@ const possiblePaths = [
   'insert',
   'messages',
   'tenants',
+  'edit',
 ];
 
 function Header() {

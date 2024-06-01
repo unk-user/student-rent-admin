@@ -80,7 +80,7 @@ function PropertiesPage() {
         />
         <Button
           handleClick={handleClick}
-          className="bg-slate-950 text-gray-200 h-12"
+          className="bg-slate-950 text-gray-200"
         >
           <span className="mr-2">+</span>
           Add Listing

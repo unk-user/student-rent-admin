@@ -4,6 +4,7 @@ import Signup from './pages/signupPage/Signup';
 import axios from 'axios';
 import LandlordLayout from './components/LandlordLayout';
 import PropertiesPage from './pages/property-details/PropertiesPage';
+import PropertyEditPage from './pages/property-edit/PropertyEditPage';
 import InsertPropertyForm from './pages/InsertPropertyPage/InsertPropertyForm';
 import Step1 from './pages/InsertPropertyPage/Step1';
 import Step2 from './pages/InsertPropertyPage/Step2';
@@ -12,6 +13,7 @@ import Step4 from './pages/InsertPropertyPage/Step4';
 import Step5 from './pages/InsertPropertyPage/Step5';
 import Step6 from './pages/InsertPropertyPage/Step6';
 import Publish from './pages/InsertPropertyPage/Publish';
+import PropertyEditGeneral from './pages/property-edit/PropertyEditGeneral';
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -40,6 +42,24 @@ function App() {
         {
           path: 'properties',
           element: <PropertiesPage />,
+        },
+        {
+          path: 'properties/edit/:listingId',
+          element: <PropertyEditPage />,
+          children: [
+            {
+              path: 'general',
+              element: <PropertyEditGeneral />,
+            },
+            {
+              path: 'location',
+              element: <div>Location</div>,
+            },
+            {
+              path: 'tenants',
+              element: <div>Tenants</div>,
+            },
+          ],
         },
         {
           path: 'properties/insert',
@@ -71,7 +91,7 @@ function App() {
             },
             {
               path: 'publish',
-              element: <Publish />
+              element: <Publish />,
             },
           ],
         },

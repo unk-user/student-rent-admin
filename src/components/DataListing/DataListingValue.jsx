@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function DataListingValue({ children }) {
-  return <h6>{children}</h6>;
+  return <div>{children}</div>;
 }
 
 DataListingValue.propTypes = {

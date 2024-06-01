@@ -40,7 +40,7 @@ function Navbar() {
   const currentUrl = useLocation().pathname.split('/')[2] || '';    
   
   return (
-    <aside className="z-10 fixed top-0 left-0 bottom-0">
+    <aside className="z-10 fixed top-0 left-0 h-screen">
       <div className="bg-gray-600 w-[76px] h-full flex flex-col items-center py-4">
         <div className="text-2xl text-center">LOGO</div>
         <ul className="flex flex-col gap-4 mt-16">

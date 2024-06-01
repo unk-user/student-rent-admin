@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Delete02Icon from '@/icons/delete-02-stroke-rounded';
 
 function DataListingStat({ listing }) {
-  const optimisedImageUrl = listing.images[0].url
+  const optimisedImageUrl = listing?.images[0]?.url
     .split('upload')
     .join('upload/f_auto,q_auto,w_800,h_600');
 
@@ -26,7 +26,7 @@ function DataListingStat({ listing }) {
         {listing.images[0] && (
           <img
             src={optimisedImageUrl}
-            loading='lazy'
+            loading="lazy"
             className="h-full object-cover rounded-sm brightness-[80%]"
           />
         )}
