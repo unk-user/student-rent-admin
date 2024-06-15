@@ -7,7 +7,7 @@ import useQueryAuth from '@/hooks/useQueryAuth';
 
 function LandlordLayout() {
   const isMobile = useMediaQuery('(max-width: 767px');
-  const { status } = useQueryAuth({ queryKey: ['auth'], url: '/me' });
+  const { status } = useQueryAuth({ queryKey: ['auth'], url: '/user' });
 
   return status === 'success' ? (
     <article className="h-max relative flex md:ml-[76px]">
