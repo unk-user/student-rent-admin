@@ -55,7 +55,7 @@ function PropertiesPage() {
   };
 
   return (
-    <main className="h-full relative flex flex-col">
+    <main className="h-full xl:px-4 relative flex flex-col">
       <section className="flex item-center z-20 bg-gray-300 pt-4 px-4 xl:px-12">
         <h4>
           Listings <span className="text-lg">({data?.listings?.length})</span>

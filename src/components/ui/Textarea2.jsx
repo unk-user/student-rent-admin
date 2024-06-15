@@ -6,7 +6,7 @@ function Textarea2({ value, onChange, placeholder, ...props }) {
       rows={props.rows || '10'}
       onChange={onChange}
       placeholder={placeholder}
-      className='textarea textarea-bordered resize-none w-full text-base h-28'
+      className='textarea textarea-bordered resize-none w-full text-base h-24'
       value={value}
     ></textarea>
   );

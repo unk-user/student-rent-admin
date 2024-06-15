@@ -14,6 +14,7 @@ import Step5 from './pages/InsertPropertyPage/Step5';
 import Step6 from './pages/InsertPropertyPage/Step6';
 import Publish from './pages/InsertPropertyPage/Publish';
 import PropertyEditGeneral from './pages/property-edit/PropertyEditGeneral';
+import ProfileEditPage from './pages/ProfileEdit/ProfileEditPage';
 
 function App() {
   axios.defaults.withCredentials = true;
@@ -38,6 +39,10 @@ function App() {
         {
           path: '',
           element: <div>Nothing to overview for now</div>,
+        },
+        {
+          path: 'edit-profile',
+          element: <ProfileEditPage />,
         },
         {
           path: 'properties',

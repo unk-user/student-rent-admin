@@ -16,10 +16,16 @@ function ListingProvider({ children }) {
     queryKey: ['property', listingId],
     url: `/landlord/listings/${listingId}`,
   });
-  const [listingFormData, setListingFormData] = useState(listing?.rentalListing || {});
+  const [listingFormData, setListingFormData] = useState(
+    listing?.rentalListing || {}
+  );
   const [removedImages, setRemovedImages] = useState([]);
   const [newImages, setNewImages] = useState([]);
-  
+
+  useEffect(() => {
+    setListingFormData(listing?.rentalListing || {});
+  }, [listing]);
+
   const updateListingMutation = useMutation({
     mutationKey: ['updateListing'],
     mutationFn: async (images) => {
@@ -49,12 +55,18 @@ function ListingProvider({ children }) {
         formData.append('files', file);
       });
       const { data } = await axiosInstance.post('/upload', formData, {
-        headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${auth?.accessToken}` },
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${auth?.accessToken}`,
+        },
       });
       return data;
     },
     onSuccess: ({ results }) => {
-      const images = results.map((image) => ({ public_id: image.public_id, url: image.secure_url }));
+      const images = results.map((image) => ({
+        public_id: image.public_id,
+        url: image.secure_url,
+      }));
       updateListingMutation.mutate(images);
     },
   });

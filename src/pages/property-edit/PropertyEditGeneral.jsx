@@ -34,7 +34,7 @@ function PropertyEditGeneral() {
   };
 
   return (
-    <section className="py-4 max-sm:px-4">
+    <div className="py-4 max-sm:px-4">
       {status === 'success' && (
         <>
           <SettingsSectionWrapper>
@@ -59,7 +59,7 @@ function PropertyEditGeneral() {
           </SettingsSectionWrapper>
           <SettingsSectionWrapper>
             <SettingsSectionTitle title="Title:">
-              <div>{listing.title} (Edit)</div>
+              <div>Edit the title of your listing</div>
             </SettingsSectionTitle>
             <SettingSectionBody>
               <Input2
@@ -76,7 +76,7 @@ function PropertyEditGeneral() {
           </SettingsSectionWrapper>
           <SettingsSectionWrapper>
             <SettingsSectionTitle title="Description:">
-              <div>{listing.description} (Edit)</div>
+              <div>Edit the description of your listing</div>
             </SettingsSectionTitle>
             <SettingSectionBody>
               <Textarea2
@@ -178,15 +178,15 @@ function PropertyEditGeneral() {
               Cancel
             </Button>
             <Button
-              className="bg-gray-900 text-white py-3 w-36 rounded-md"
+              className="bg-gray-900 text-white py-3 px-4 rounded-md"
               handleClick={handleSubmit}
             >
-              Save
+              Save Changes
             </Button>
           </div>
         </>
       )}
-    </section>
+    </div>
   );
 }
 

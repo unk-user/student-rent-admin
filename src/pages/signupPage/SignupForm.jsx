@@ -28,6 +28,7 @@ function SignupForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
+    formData.append('role', 'landlord');
     const data = Object.fromEntries(formData);
     mutation.mutate(data);
   };

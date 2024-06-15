@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  @apply text-[18px] max-xl:text-[15px] max-md:text-[14px];
+}
+
 body {
   @apply bg-gray-300 font-[Rubik];
 }
@@ -24,11 +28,11 @@ h4 {
 }
 
 h5 {
-  @apply text-[1.4rem];
+  @apply text-[1.4rem] leading-6;
 }
 
 h6 {
-  @apply text-[1.2rem];
+  @apply text-lg;
 }
 
 input {

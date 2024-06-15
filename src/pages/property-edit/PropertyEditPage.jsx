@@ -1,7 +1,6 @@
 import SettingsLayout from '@/components/SettingsLayout/SettingsLayout';
 import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import Settings02Icon from '@/icons/settings-02-stroke-rounded';
 import { v4 as uuidV4 } from 'uuid';
 import SettingsHeaderWrapper from '@/components/SettingsLayout/SettingsHeaderWrapper';
 import DocumentValidationIcon from '@/icons/document-validation-stroke-rounded';
@@ -55,7 +54,6 @@ function PropertyEditPage() {
     <SettingsLayout>
       <SettingsHeaderWrapper
         header="Edit Property"
-        icon={<Settings02Icon size={'2rem'} />}
       >
         <Tabs
           value={selectedTab}

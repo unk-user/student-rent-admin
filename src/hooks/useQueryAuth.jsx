@@ -42,10 +42,10 @@ function useQueryAuth({ queryKey, url }) {
       (error?.response.status === 401 || error?.response.status === 403) &&
       authErrorCount < 2
     ) {
-      console.log(authErrorCount);
       setAuthErrorCount((prevCount) => prevCount + 1);
       refreshAccessToken().then(() => refetch());
     } else if (status === 'error' && authErrorCount > 1) {
+      setAuthErrorCount(0);
       navigate('/login', { replace: true });
     } else if (status === 'success') {
       setAuthErrorCount(0);
